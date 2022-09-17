@@ -1,2 +1,2 @@
 go here
-Madhav003.github.io/main_page.html
+/main_page.html
