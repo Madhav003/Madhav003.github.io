@@ -1,35 +1,79 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Bo Burham</title>
-    </head>
-    <body background="https://i.imgur.com/56Z6pFh.jpeg">
-        <h1 align=center><b>BO BURNHAM</b></h1>
-        <h2 align="left"><b>All Specials</b></h2>
-        <ol>
-            <li><a href="https://www.google.com">Words,Words,Words</a></li>
-            <li><a href="https://www.google.com">What.</a></li>
-            <li><a href="https://www.google.com">Make Happy</a></li>
-            <li><a href="/INSIDE.html">Inside</a></li>
-            <li><a href="https://www.google.com">Outtakes</a></li>
-        </ol>
-        <!-- Default Statcounter code for my website https://madhav003.github.io/ -->
-<h2>Comments</h2>
-<div id="comments">
-  <p>No comments yet. Be the first to leave one!</p>
-</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        #chatbox {
+            width: 60%;
+            margin: auto;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #fff;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gemini Chat</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="user-input" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
 
-<h3>Leave a Comment</h3>
-<form id="comment-form">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Your Name">
-  </div>
-  <div class="form-group">
-    <label for="comment">Comment:</label>
-    <textarea id="comment" name="comment" rows="5" placeholder="Write your comment here..."></textarea>
-  </div>
-  <button type="submit">Submit Comment</button>
-</form>
-    </body>
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("user-input");
+            let message = input.value.trim();
+            if (!message) return;
+            input.value = "";
+
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll
+
+            try {
+                let response = await fetch("https://your-worker-name.workers.dev", { 
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message })
+                });
+
+                let data = await response.json();
+                let reply = data.response || "Error: No response from Gemini";
+                
+                chatbox.innerHTML += `<p><strong>Gemini:</strong> ${reply}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll
+            } catch (error) {
+                chatbox.innerHTML += `<p><strong>Gemini:</strong> Error contacting server.</p>`;
+            }
+        }
+    </script>
+</body>
 </html>
