@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini Chat</title>
+    <title>Gemini Flash 2.0 Chat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +22,7 @@
             border: 1px solid #ddd;
             padding: 10px;
             background: #fff;
+            text-align: left;
         }
         input {
             width: 60%;
@@ -42,37 +43,41 @@
     </style>
 </head>
 <body>
-    <h1>Gemini Chat</h1>
+    <h1>Gemini Flash 2.0 Chat</h1>
     <div id="chatbox"></div>
     <input type="text" id="user-input" placeholder="Type a message..." />
     <button onclick="sendMessage()">Send</button>
 
     <script>
         async function sendMessage() {
-    let input = document.getElementById("user-input");
-    let message = input.value.trim();
-    if (!message) return;
-    input.value = "";
+            let input = document.getElementById("user-input");
+            let message = input.value.trim();
+            if (!message) return;
+            input.value = "";
 
-    let chatbox = document.getElementById("chatbox");
-    chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
 
-    try {
-        let response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=YOUR_API_KEY`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: message }] }]
-            })
-        });
+            try {
+                // Change the model to gemini-2.0-flash
+                let response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=AIzaSyDbCHJb34AVJFAPemP8KRGwWZlztuZ3hKM`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: message }] }]
+                    })
+                });
 
-        let data = await response.json();
-        let reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from Gemini.";
-        chatbox.innerHTML += `<p><strong>Gemini:</strong> ${reply}</p>`;
-    } catch (error) {
-        chatbox.innerHTML += `<p><strong>Gemini:</strong> Error contacting API.</p>`;
-    }
-}
+                let data = await response.json();
+                let reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from Gemini.";
+                chatbox.innerHTML += `<p><strong>Gemini:</strong> ${reply}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            } catch (error) {
+                chatbox.innerHTML += `<p><strong>Gemini:</strong> Error contacting API.</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }
+        }
     </script>
 </body>
 </html>
