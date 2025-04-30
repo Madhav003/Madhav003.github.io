@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maddyy - Personal Page</title>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --text-color: #2b2d42;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 60px 20px; /* Reduced from 100px to 60px to make the header smaller */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #adb5bd;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .social-link i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .social-link.github i {
+            color: #333;
+        }
+
+        .social-link.blog i {
+            color: #fc6d26;
+        }
+
+        .social-link.linkedin i {
+            color: #0077b5;
+        }
+
+        .social-link.gemini i {
+            color: #8338ec;
+        }
+
+        .social-link.instagram i {
+            color: #e4405f;
+        }
+
+        .social-link h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .social-link p {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .about-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-section h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        footer {
+            background-color: #2b2d42;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 80%;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="profile-image">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Madhav B.</h1>
+            <p>Professional dumbass</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="social-links">
+            <a href="https://github.com/Madhav003" class="social-link github">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>Check out my code projects</p>
+            </a>
+            <a href="https://maddyb003.blogspot.com/" class="social-link blog">
+                <i class="fas fa-blog"></i>
+                <h3>Blog</h3>
+                <p>My poetry and stuff</p>
+            </a>
+            <a href="https://www.linkedin.com/in/madhav-bhalodia-2399aa286/" class="social-link linkedin">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p>Connect professionally</p>
+            </a>
+            <a href="https://your-gemini-frontend-url.com" class="social-link gemini">
+                <i class="fas fa-rocket"></i>
+                <h3>Gemini Frontend</h3>
+                <p>Check out my Gemini project</p>
+            </a>
+        </div>
+
+        <div class="about-section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    Hello! I love tinkering with stuff and building things, and also writing :)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 MB.</p>
+    </footer>
+</body>
+</html>
